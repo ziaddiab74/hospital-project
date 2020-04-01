@@ -36,33 +36,106 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
   </div>
 </div>
   
-  
   <!-- First Photo Grid-->
   <div class="w3-row-padding">
     <div class="w3-third w3-container w3-margin-bottom">
       <div class="w3-container w3-white w3-xlarge ">
-        <p><b>DR.AHMAD</b></p></div>
+        <p><b>DR.Khaled</b></p></div>
         <div class="w3-container w3-white ">
-        <p>Department:Surgery</p>
+        <p>Department:Skin</p>
         <p>Designation:Specialist</p>
 <p>Recent Positions:</p>
 <p>Asst. Lecturer of surgery MedicineAsst.
 <p> Lecturer of surgery MedicineSuez Canal univ</p>
-      <button id="submitSignUp" class="btn btn-success btn-lg btn-block">book</button>
+
+  
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal">
+    Book
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Receipt</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>Dr.Ziad
+          <p>Date: 20/3/2020
+          <p>Waiting Customer: 2
+          <p>Time: 6:00pm
+          <P>Amount: 200LE
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      
+    </div>
+  </div>
+  
+</div>
+
       </div>
       
     </div>
+    <!--..............................................................................................................-->
     <div class="w3-third w3-container w3-margin-bottom">
     <div class="w3-container w3-white w3-xlarge ">
         <p><b>DR.YOUSSEF</b></p></div>
         <div class="w3-container w3-white">
-        <p>Department:Anaesthesia
+        <p>Department:Skin
         <p>Designation:Specialist
         <p>Recent Positions:
         <p>Anaesthesia Specialist SGH-Jeddah
 
         <p>Anaesthesia Resident, El Hela</p>
-        <button id="book" class="btn btn-success btn-lg btn-block">book</button>
+         <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal">
+    Book
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Receipt</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>Dr.Ziad
+          <p>Date: 20/3/2020
+          <p>Waiting Customer: 2
+          <p>Time: 6:00pm
+          <P>Amount: 200LE
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      
+    </div>
+  </div>
+  
+</div>
 
       </div>
     </div>
@@ -70,13 +143,48 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-container w3-white w3-xlarge ">
         <p><b>DR.ZIAD</b></p></div>
         <div class="w3-container w3-white">
-        <p>Department:Cardiology
+        <p>Department:Skin
 <p>Designation:Consultant</p>
 <p>Recent Positions:
         <p>Anaesthesia Specialist SGH-Jeddah
 
         <p>Anaesthesia Resident, El Hela</p>
-        <button id="book" class="btn btn-success btn-lg btn-block">book</button>
+         <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal">
+    Book
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Receipt</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>Dr.Ziad
+          <p>Date: 20/3/2020
+          <p>Waiting Customer: 2
+          <p>Time: 6:00pm
+          <P>Amount: 200LE
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      
+    </div>
+  </div>
+  
+</div>
 
       </div>
       
@@ -90,12 +198,47 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-container w3-white w3-xlarge ">
         <p><b>DR.MOHAMED</b></p></div>
         <div class="w3-container w3-white">
-        <p>Department:Internal Medicine/GIT & Endoscopy
+        <p>Department:Skin
 <p>Designation:Consultan</p>
 <p>Recent Positions:
         <p>Anaesthesia Specialist SGH-Jeddah
         <p>Anaesthesia Resident, El Hela</p>
-        <button id="book" class="btn btn-success btn-lg btn-block">book</button>
+         <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal">
+    Book
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Receipt</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>Dr.Ziad
+          <p>Date: 20/3/2020
+          <p>Waiting Customer: 2
+          <p>Time: 6:00pm
+          <P>Amount: 200LE
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      
+    </div>
+  </div>
+  
+</div>
       </div>
     </div>
 
@@ -103,27 +246,95 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
     <div class="w3-container w3-white w3-xlarge ">
         <p><b>DR.AHMAD MOHAMED</b></p></div>
         <div class="w3-container w3-white">
-        <p>Department:Neurosurgery
+        <p>Department:Skin
 <P>Designation:Consultant
 <p>Recent Positions:
         <p>Anaesthesia Specialist SGH-Jeddah
         <p>Anaesthesia Resident, El Hela</p>
-        <button id="book" class="btn btn-success btn-lg btn-block">book</button>
+ <!-- Button to Open the Modal -->
+ <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal">
+    Book
+  </button>
 
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Receipt</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>Dr.Ziad
+          <p>Date: 20/3/2020
+          <p>Waiting Customer: 2
+          <p>Time: 6:00pm
+          <P>Amount: 200LE
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      
+    </div>
+  </div>
+  
+</div>
       </div>
     </div>
     <div class="w3-third w3-container">
     <div class="w3-container w3-white w3-xlarge ">
         <p><b>DR.KHALED</b></p></div>
         <div class="w3-container w3-white">
-        <p>Department:Emergency
+        <p>Department:Skin
         <p>Designation:Specialist
         <p>Recent Positions:
 <p>Asst. Lecturer of Emergency MedicineAsst.
 
 <p>Lecturer of Emergency MedicineSuez Canal univ.</p>
-        <button id="book" class="btn btn-success btn-lg btn-block">book</button>
+ <!-- Button to Open the Modal -->
+ <button type="button" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal">
+    Book
+  </button>
 
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Receipt</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <p>Dr.Ziad
+          <p>Date: 20/3/2020
+          <p>Waiting Customer: 2
+          <p>Time: 6:00pm
+          <P>Amount: 200LE
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      
+    </div>
+  </div>
+  
+</div>
       </div>
     </div>
   </div>
