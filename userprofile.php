@@ -1,5 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<?php
+session_start();
+include("db_conection.php");
+if(isset($_POST['submit']))
+{
+		$sql =("UPDATE tblusers SET FullName='$_POST[FullName]',phone='$_POST[phone]',
+    username='$_POST[username]',UserEmail='$_POST[UserEmail]',Password='$_POST[Password]'
+    WHERE id = '$_SESSION[id]'");
+
+		if($qsql = mysqli_query($con,$sql))
+		{
+			echo "<script>alert('user record updated successfully...');</script>";
+		}
+		else
+		{ 
+			echo mysqli_error($con);
+		}
+}
+
+if(isset($_SESSION['id']))
+{
+	$sql="SELECT * FROM tblusers WHERE  id='$_SESSION[id]' ";
+	$qsql = mysqli_query($con,$sql);
+	$rsedit = mysqli_fetch_array($qsql);
+	
+}
+
+?>
+
+
+
 <head>
 <title>HOSPITAL PROJECT</title>
 <meta charset="UTF-8">
@@ -120,8 +152,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
                       <div class="form-group">
                           
                           <div class="col-xs-6">
-                              <label for="first_name"><h4>Full Name</h4></label>
-                              <input type="text" class="form-control" name="first_name" id="first_name" placeholder="Full name" title="enter your first name if any.">
+                              <label for="FullName"><h4>FullName</h4></label>
+                              <input type="text" class="form-control" name="FullName" id="FullName" placeholder="FullName " title="enter your FullName if any.">
                           </div>
                       </div>
           
@@ -129,9 +161,19 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
                           
                           <div class="col-xs-6">
                               <label for="phone"><h4>Phone</h4></label>
-                              <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                              <input type="text" class="form-control" name="phone" id="phone" placeholder=" phone" title="enter your phone number if any.">
                           </div>
                       </div>
+
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="age"><h4>age</h4></label>
+                              <input type="text" class="form-control" name="age" id="age" placeholder= "age" title="enter your age if any.">
+                          </div>
+                      </div>
+
+                      
                       <div class="form-group">
                           
                           <div class="col-xs-6">
@@ -141,6 +183,12 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
                       </div>
                       <div class="form-group">
                           
+                      <div class="col-xs-6">
+                              <label for="UsreEmail"><h4>UsreEmail</h4></label>
+                              <input type="text" class="form-control" name="UsreEmail" id="UsreEmail" placeholder="UsreEmail" title="enter your UsreEmail.">
+                          </div>
+                      </div>
+
                           <div class="col-xs-6">
                               <label for="password"><h4>Password</h4></label>
                               <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
@@ -149,7 +197,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
                       <div class="form-group">
                            <div class="col-xs-12">
                                 <br>
-                              	<button class="btn btn-lg btn-success " type="submit"style="background-color:black"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                              	<button class="btn btn-lg btn-success " type="submit"style="background-color:black"><i class="glyphicon glyphicon-ok-sign"></i> submit</button>
                                
                             </div>
                       </div>
