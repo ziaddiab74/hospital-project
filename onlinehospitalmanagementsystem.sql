@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2020 at 09:43 PM
+-- Generation Time: Jun 07, 2020 at 04:12 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -272,17 +272,6 @@ CREATE TABLE `room` (
   `room_tariff` float(10,2) NOT NULL,
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `room`
---
-
-INSERT INTO `room` (`roomid`, `roomtype`, `roomno`, `noofbeds`, `room_tariff`, `status`) VALUES
-(15, 'GENERAL WARD', 1, 20, 500.00, 'Active'),
-(16, 'SPECIAL WARD', 2, 10, 100.00, 'Active'),
-(17, 'GENERAL WARD', 2, 10, 500.00, 'Active'),
-(18, 'GENERAL WARD', 121, 13, 150.00, 'Active'),
-(19, 'GENERAL WARD', 850, 11, 500.00, 'Active');
 
 --
 -- Indexes for dumped tables
