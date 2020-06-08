@@ -81,7 +81,7 @@ include("header.php");
 </div>
 <div class="wrapper col4">
   <div id="container">
-  <p><form method="get" action=""><strong>Date -</strong> <input type="date" name="date" value="<?php echo $_GET[date]; ?>" ><input type="submit" name="submit" value="Submit"></form></p>
+  
     <h1>Number of Appointment Records :     
     <?php
 	$sql = "SELECT * FROM appointment WHERE status='Active'";
@@ -92,18 +92,7 @@ include("header.php");
 	$qsql = mysqli_query($con,$sql);
 	echo mysqli_num_rows($qsql);
 	?>
-    </h1>	
-    <h1>Number of Billing Reports : 
-    <?php
-	$sql = "SELECT * FROM billing WHERE billingid !='0'";
-	if(isset($_GET[date]))
-	{
-		$sql = $sql . " AND billingdate ='$_GET[date]'";
-	}
-	$qsql = mysqli_query($con,$sql);
-	echo mysqli_num_rows($qsql);
-	?>
-    </h1>
+    
    
     <h1>Number of Patient Records : 
     <?php
@@ -116,17 +105,7 @@ include("header.php");
 	echo mysqli_num_rows($qsql);
 	?>
     </h1>    
-    <h1>Number of Treatment Records : 
-    <?php
-	$sql = "SELECT * FROM treatment_records WHERE status='Active'";
-	if(isset($_GET[date]))
-	{
-		$sql = $sql . " AND treatment_date  ='$_GET[date]'";
-	}
-	$qsql = mysqli_query($con,$sql);
-	echo mysqli_num_rows($qsql);
-	?>
-    </h1>
+    
     
     <h1>Number of Prescription  : 
     <?php
@@ -152,13 +131,7 @@ include("header.php");
 	echo mysqli_num_rows($qsql);
 	?>
     </h1>
-    <h1>Number of Treatment Types : 
-    <?php
-	$sql = "SELECT * FROM treatment WHERE status='Active'";
-	$qsql = mysqli_query($con,$sql);
-	echo mysqli_num_rows($qsql);
-	?>
-    </h1>
+    
     
   
     <h1>Number of Admin records :  
@@ -189,19 +162,8 @@ include("header.php");
 	echo mysqli_num_rows($qsql);
 	?>
     </h1>
-    <h1>Number of Billing Records :
-    <?php
-	$sql = "SELECT * FROM billing_records WHERE status='Active'";
-	$qsql = mysqli_query($con,$sql);
-	echo mysqli_num_rows($qsql);
-	?>
-    </h1>
-  </div>
-</div>
+   
 
     <div class="clear"></div>
   </div>
 </div>
-<?php
-include("footer.php");
-?>
