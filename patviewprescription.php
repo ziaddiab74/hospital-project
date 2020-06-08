@@ -121,21 +121,19 @@ while($rs = mysqli_fetch_array($qsql))
         <table width="200" border="3">
           <tbody>
             <tr>
-              <td>Medicine</td>
-              <td>Cost</td>
-              <td>Unit</td>
-              <td>Dosage</td>
+           
+              <td>diagnose</td>
+              
             </tr>
              <?php
-             $sqlprescription_records ="SELECT * FROM prescription_records LEFT JOIN medicine ON prescription_records.medicine_name=medicine.medicineid WHERE prescription_records.prescription_id='$rs[0]'";
+             $sqlprescription_records ="SELECT * FROM prescription_records  WHERE prescription_records.prescription_id='$rs[0]'";
             $qsqlprescription_records = mysqli_query($con,$sqlprescription_records);
             while($rsprescription_records = mysqli_fetch_array($qsqlprescription_records))
             {
             echo "<tr>
-              <td>&nbsp;$rsprescription_records[medicinename]</td>
-              <td>&nbsp;$rsprescription_records[cost]</td>
-               <td>&nbsp;$rsprescription_records[unit]</td>
-                <td>&nbsp;$rsprescription_records[dosage]</td>
+              
+               <td>&nbsp;$rsprescription_records[diagnose]</td>
+                
                   
             </tr>";
             }
@@ -150,15 +148,20 @@ while($rs = mysqli_fetch_array($qsql))
 <?php
 }
 ?>        <p>&nbsp;</p>
+<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
   </div>
 </div>
 </div>
  <div class="clear"></div>
   </div>
 </div>
-<?php
-include("footer.php");
-?>
+
 <script>
 function myFunction()
 {
