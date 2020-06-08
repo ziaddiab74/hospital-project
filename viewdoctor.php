@@ -93,7 +93,7 @@ if(isset($_GET[delid]))
           <td>Mobile Number</td>
           <td>Department</td>
           <td>Login ID</td>
-          <td>Consultancy Charge</td>
+          
           <td>Education</td>
           <td>Experience</td>
           <td>Status</td>
@@ -113,7 +113,7 @@ if(isset($_GET[delid]))
           <td>&nbsp;$rs[mobileno]</td>
 		   <td>&nbsp;$rsdept[departmentname]</td>
 			<td>&nbsp;$rs[loginid]</td>
-			<td>&nbsp;$rs[consultancy_charge]</td>
+			
 			 <td>&nbsp;$rs[education]</td>
 			<td>&nbsp;$rs[experience]</td>
           <td>$rs[status]</td>
@@ -124,12 +124,18 @@ if(isset($_GET[delid]))
 		?>      </tbody>
     </table>
     <p>&nbsp;</p>
+    <button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
   </div>
 </div>
 </div>
+
  <div class="clear"></div>
   </div>
 </div>
-<?php
-include("footer.php");
-?>
+
