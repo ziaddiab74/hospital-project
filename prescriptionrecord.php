@@ -15,7 +15,7 @@ if(isset($_POST[submit]))
 {
 	if(isset($_GET[editid]))
 	{
-			$sql ="UPDATE prescription_records SET prescription_id='$_POST[prescriptionid]',medicine_name='$_POST[medicine]',cost='$_POST[cost]',unit='$_POST[unit]',dosage='$_POST[select2]',status=' $_POST[select]' WHERE prescription_record_id='$_GET[editid]'";
+			$sql ="UPDATE prescription_records SET prescription_id='$_POST[prescriptionid]'diagnose='$_POST[diagnose]',status=' $_POST[select]' WHERE prescription_record_id='$_GET[editid]'";
 		if($qsql = mysqli_query($con,$sql))
 		{
 			echo "<script>alert('prescription record updated successfully...');</script>";
@@ -27,10 +27,10 @@ if(isset($_POST[submit]))
 	}
 	else
 	{
-		$sql ="INSERT INTO prescription_records(prescription_id,medicine_name,cost,unit,dosage,status) values('$_POST[prescriptionid]','$_POST[medicineid]','$_POST[cost]','$_POST[unit]','$_POST[select2]','Active')";
+		$sql ="INSERT INTO prescription_records(prescription_id,diagnose,status) values('$_POST[prescriptionid]','$_POST[diagnose]','Active')";
 		if($qsql = mysqli_query($con,$sql))
 		{	
-			$presamt=$_POST[cost]*$_POST[unit];
+			
 			$billtype = "Prescription update";
 			$prescriptionid= $_POST[prescriptionid];
 			include("insertbillingrecord.php");
@@ -166,56 +166,14 @@ if(isset($_GET[editid]))
     <table width="200" border="3">
       <tbody>
       
-        <tr>
-          <td width="34%">Medicine</td>
-          <td width="66%">
-		  <select name="medicineid" id="medicineid" onchange="loadmedicine(this.value)">
-		  <option value="">Select Medicine</option>
-		  <?php
-		$sqlmedicine ="SELECT * FROM medicine WHERE status='Active'";
-		$qsqlmedicine = mysqli_query($con,$sqlmedicine);
-		while($rsmedicine = mysqli_fetch_array($qsqlmedicine))
-		{
-			echo "<option value='$rsmedicine[medicineid]'>$rsmedicine[medicinename] ( ₹ $rsmedicine[medicinecost] )</option>";
-		}
-		?>
-		  </select>
-		  </td>
+        
+          <td>diagnose</td>
+          <td><input type="text"  name="diagnose" id="diagnose" cols="45" rows="5" value="<?php echo $rsedit[diagnose]; ?>"  onchange="" required /></td>
         </tr>
         <tr>
-          <td>Cost</td>
-          <td><input type="text" name="cost" id="cost" value="<?php echo $rsedit['cost']; ?>" readonly style="background-color:pink;" /></td>
-        </tr>
+         
         <tr>
-          <td>Unit</td>
-          <td><input type="number" min="1" name="unit" id="unit" value="<?php echo $rsedit[unit]; ?>" onkeyup="calctotalcost(cost.value,this.value)" onchange="" /></td>
-        </tr>
-        <tr>
-          <td>Total Cost</td>
-          <td><input type="text" name="totcost" id="totcost" value="<?php echo $rsedit['cost']; ?>" readonly style="background-color:pink;" /></td>
-        </tr>
-        <tr>
-          <td>Dosage</td>
-          <td><select name="select2" id="select2">
-           <option value="">Select</option>
-          <?php
-		  $arr = array("0-0-1","0-1-1","1-0-1","1-1-1","1-1-0","0-1-0","1-0-0");
-		  foreach($arr as $val)
-		  {
-			 if($val == $rsedit[dosage])
-			  {
-			  echo "<option value='$val' selected>$val</option>";
-			  }
-			  else
-			  {
-				  echo "<option value='$val'>$val</option>";			  
-			  }
-		  }
-		  ?>
-          </select></td>
-        </tr>
-        <tr>
-          <td colspan="2" align="center"><input type="submit" name="submit" id="submit" value="Submit" /> </td>
+          <td colspan="2" align="center"><input action="doctoraccount.php" type="submit" name="submit" id="submit" value="Submit" /> </td>
         </tr>
       </tbody>
     </table>
@@ -224,56 +182,7 @@ if(isset($_GET[editid]))
 			}
 		?>
     
-  <h1>View Prescription record</h1>
-    <table width="200" border="3">
-      <tbody>
-        <tr>
-          <td><strong>Medicine</strong></td>
-          <td><strong>Dosage</strong></td>
-          <td><strong>Cost</strong></td>
-          <td><strong>Unit</strong></td>
-          <td><strong>Total Cost</strong></td>
-                    <?php
-			if(!isset($_SESSION[patientid]))
-			{
-		  ?>  
-          <td><strong>Action</strong></td>
-          <?php
-			}
-			?>
-        </tr>
-         <?php
-		 $gtotal=0;
-		$sql ="SELECT * FROM prescription_records LEFT JOIN medicine on prescription_records.medicine_name=medicine.medicineid WHERE prescription_id='$_GET[prescriptionid]'";
-		$qsql = mysqli_query($con,$sql);
-		while($rs = mysqli_fetch_array($qsql))
-		{
-        echo "<tr>
-          <td>&nbsp;$rs[medicinename]</td>
-		    <td>&nbsp;$rs[dosage]</td>
-          <td>&nbsp;₹$rs[cost]</td>
-		   <td>&nbsp;$rs[unit]</td>
-		   <td  align='right'>₹" . $rs[cost] * $rs[unit] . "</td>";
-			if(!isset($_SESSION[patientid]))
-			{
-			 echo " <td>&nbsp; <a href='prescriptionrecord.php?delid=$rs[prescription_record_id]&prescriptionid=$_GET[prescriptionid]'>Delete</a> </td>"; 
-			}
-		echo "</tr>";
-		$gtotal = $gtotal+($rs[cost] * $rs[unit]);
-		}
-		?>
-        <tr>
-          <th colspan="4" align="right">Grand Total - </th>
-		  <th align="right">₹<?php echo $gtotal; ?></th>
-		  <td></td>
-          </tr>
-        <tr>
-          <td colspan="6"><div align="center">
-            <input type="submit" name="print" id="print" value="Print" onclick="myFunction()"/>
-          </div></td>
-          </tr>
-      </tbody>
-    </table>
+  
 	
 	<table>
 	<tr><td>
@@ -288,41 +197,22 @@ function myFunction() {
 
 
     <p>&nbsp;</p>
+	<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
   </div>
 </div>
 </div>
  <div class="clear"></div>
   </div>
 </div>
-<?php
-include("footer.php");
-?>
-<script type="application/javascript">
-function loadmedicine(medicineid)
-{
-	if (window.XMLHttpRequest) 
-	{
-		// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp = new XMLHttpRequest();
-	} else {
-		// code for IE6, IE5
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			document.getElementById("totcost").value = this.responseText;
-			document.getElementById("cost").value = this.responseText;
-			document.getElementById("unit").value = 1;
-		} 
-	};
-	xmlhttp.open("GET","ajaxmedicine.php?medicineid="+medicineid,true);
-	xmlhttp.send();
-}
 
-function calctotalcost(cost,qty)
-{
-	 document.getElementById("totcost").value = parseFloat(cost) * parseFloat(qty);
-} 
+<script type="application/javascript">
+
 
 function validateform()
 {
@@ -332,30 +222,9 @@ function validateform()
 		document.frmpresrecord.prescriptionid.focus();
 		return false;
 	}
-	else if(document.frmpresrecord.medicine.value == "")
-	{
-		alert("Medicine field should not be empty..");
-		document.frmpresrecord.medicine.focus();
-		return false;
-	}
-	else if(document.frmpresrecord.cost.value == "")
-	{
-		alert("Cost should not be empty..");
-		document.frmpresrecord.cost.focus();
-		return false;
-	}
-	else if(document.frmpresrecord.unit.value == "")
-	{
-		alert("Unit should not be empty..");
-		document.frmpresrecord.unit.focus();
-		return false;
-	}
-	else if(document.frmpresrecord.select2.value == "")
-	{
-		alert("Dosage should not be empty..");
-		document.frmpresrecord.select2.focus();
-		return false;
-	}
+	
+	
+	
 	else if(document.frmpresrecord.select.value == "" )
 	{
 		alert("Kindly select the status..");
