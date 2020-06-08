@@ -159,9 +159,7 @@ if(isset($_GET[editid]))
  <div class="clear"></div>
   </div>
 </div>
-<?php
-include("footer.php");
-?>
+
 <script type="application/javascript">
 var alphaExp = /^[a-zA-Z]+$/; //Variable to validate only alphabets
 var alphaspaceExp = /^[a-zA-Z\s]+$/; //Variable to validate only alphabets and space
