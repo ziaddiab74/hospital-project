@@ -114,9 +114,7 @@ if(isset($_POST[submit]))
  <div class="clear"></div>
   </div>
 </div>
-<?php
-include("footer.php");
-?>
+
 <script type="application/javascript">
 function validateform1()
 {
