@@ -5,7 +5,7 @@ if(isset($_POST[submit]))
 {
 	if(isset($_GET[editid]))
 	{
-		$sql ="UPDATE prescription SET treatment_records_id='$_POST[treatmentid]',doctorid='$_POST[select2]',patientid='$_POST[patientid]',prescriptiondate='$_POST[date]',status='$_POST[select]' WHERE prescription_id='$_GET[editid]'";
+		$sql ="UPDATE prescription SET ,doctorid='$_POST[select2]',patientid='$_POST[patientid]',prescriptiondate='$_POST[date]',status='$_POST[select]' WHERE prescription_id='$_GET[editid]'";
 		if($qsql = mysqli_query($con,$sql))
 		{
 			echo "<script>alert('prescription record updated successfully...');</script>";
@@ -17,7 +17,7 @@ if(isset($_POST[submit]))
 	}
 	else
 	{
-		$sql ="INSERT INTO prescription(treatment_records_id,doctorid,patientid,prescriptiondate,status,appointmentid) values('$_POST[treatmentid]','$_POST[select2]','$_POST[patientid]','$_POST[date]','Active','$_GET[appid]')";
+		$sql ="INSERT INTO prescription(doctorid,patientid,prescriptiondate,status,appointmentid) values('$_POST[select2]','$_POST[patientid]','$_POST[date]','Active','$_GET[appid]')";
 		if($qsql = mysqli_query($con,$sql))
 		{
 			$insid= mysqli_insert_id($con);
@@ -116,7 +116,7 @@ if(isset($_GET[editid]))
     <h1>Add new prescription record</h1>
      <form method="post" action="" name="frmpres" onSubmit="return validateform()">
      <input type="hidden" name="patientid" value="<?php echo $_GET[patientid]; ?>"  />
-     <input type="hidden" name="treatmentid" value="<?php echo $_GET[treatmentid]; ?>"  />
+     
      <input type="hidden" name="appid" value="<?php echo $_GET[appid]; ?>"  />
     <table width="200" border="3">
       <tbody>
@@ -190,13 +190,12 @@ if(isset($_GET[editid]))
       </tbody>
     </table>
     <p>&nbsp;</p>
+	
 </div>
  <div class="clear"></div>
   </div>
 </div>
-<?php
-include("footer.php");
-?>
+
 <script type="application/javascript">
 function validateform()
 {
