@@ -7,13 +7,12 @@ if(isset($_POST[submit]))
 		{
 				$sql ="UPDATE patient SET status='Active' WHERE patientid='$_GET[patientid]'";
 				$qsql=mysqli_query($con,$sql);
-			$roomid=0;
-			$sql ="UPDATE appointment SET appointmenttype='$_POST[apptype]',roomid='$_POST[select3]',departmentid='$_POST[select5]',doctorid='$_POST[select6]',status='Approved',appointmentdate='$_POST[appointmentdate]',appointmenttime='$_POST[time]' WHERE appointmentid='$_GET[editid]'";
+			
+			$sql ="UPDATE appointment SET appointmenttype='$_POST[apptype]'='$_POST[select3]',departmentid='$_POST[select5]',doctorid='$_POST[select6]',status='Approved',appointmentdate='$_POST[appointmentdate]',appointmenttime='$_POST[time]' WHERE appointmentid='$_GET[editid]'";
 			if($qsql = mysqli_query($con,$sql))
 			{
-				$roomid= $_POST[select3];
-				$billtype = "Room Rent";
-				include("insertbillingrecord.php");				
+				
+							
 				echo "<script>alert('appointment record updated successfully...');</script>";				
 				echo "<script>window.location='patientreport.php?patientid=$_GET[patientid]&appointmentid=$_GET[editid]';</script>";
 			}
@@ -27,7 +26,7 @@ if(isset($_POST[submit]))
 			$sql ="UPDATE patient SET status='Active' WHERE patientid='$_POST[select4]'";
 			$qsql=mysqli_query($con,$sql);
 				
-			$sql ="INSERT INTO appointment(appointmenttype,patientid,roomid,departmentid,appointmentdate,appointmenttime,doctorid,status) values('$_POST[select2]','$_POST[select4]','$_POST[select3]','$_POST[select5]','$_POST[appointmentdate]','$_POST[time]','$_POST[select6]','$_POST[select]')";
+			$sql ="INSERT INTO appointment(appointmenttype,patientid,departmentid,appointmentdate,appointmenttime,doctorid,status) values('$_POST[select2]','$_POST[select4]','$_POST[select3]','$_POST[select5]','$_POST[appointmentdate]','$_POST[time]','$_POST[select6]','$_POST[select]')";
 			if($qsql = mysqli_query($con,$sql))
 			{
 				echo "<script>alert('Appointment record inserted successfully...');</script>";
@@ -87,7 +86,7 @@ if(isset($_GET[editid]))
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
     			<div class="col-lg-2 pr-4 align-items-center">
-		    		<a class="navbar-brand" href="index.html">Cairo.<span>Hospital</span></a>
+		    		<a class="navbar-brand" >Cairo.<span>Hospital</span></a>
 	    		</div>
 	    		<div class="col-lg-10 d-none d-md-block">
 		    		<div class="row d-flex">
@@ -211,6 +210,13 @@ if(isset($_GET[editid]))
     </table>
     </form>
     <p>&nbsp;</p>
+	<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
   </div>
 </div>
 </div>
@@ -218,9 +224,7 @@ if(isset($_GET[editid]))
   </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<?php
-include("footer.php");
-?>
+
 <script type="application/javascript">
 function validateform()
 {
@@ -230,12 +234,7 @@ function validateform()
 		document.frmappnt.select4.focus();
 		return false;
 	}
-	else if(document.frmappnt.select3.value == "")
-	{
-		alert("Room type should not be empty..");
-		document.frmappnt.select3.focus();
-		return false;
-	}
+
 	else if(document.frmappnt.select5.value == "")
 	{
 		alert("Department name should not be empty..");
