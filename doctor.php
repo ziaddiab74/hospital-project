@@ -5,7 +5,7 @@ if(isset($_POST[submit]))
 {
 	if(isset($_GET[editid]))
 	{
-			$sql ="UPDATE doctor SET doctorname='$_POST[doctorname]',mobileno='$_POST[mobilenumber]',departmentid='$_POST[select3]',loginid='$_POST[loginid]',password='$_POST[password]',status='$_POST[select]',education='$_POST[education]',experience='$_POST[experience]',consultancy_charge='$_POST[consultancy_charge]' WHERE doctorid='$_GET[editid]'";
+			$sql ="UPDATE doctor SET doctorname='$_POST[doctorname]',mobileno='$_POST[mobilenumber]',departmentid='$_POST[select3]',loginid='$_POST[loginid]',password='$_POST[password]',status='$_POST[select]',education='$_POST[education]',experience='$_POST[experience]' WHERE doctorid='$_GET[editid]'";
 		if($qsql = mysqli_query($con,$sql))
 		{
 			echo "<script>alert('doctor record updated successfully...');</script>";
@@ -17,7 +17,7 @@ if(isset($_POST[submit]))
 	}
 	else
 	{
-	$sql ="INSERT INTO doctor(doctorname,mobileno,departmentid,loginid,password,status,education,experience,consultancy_charge) values('$_POST[doctorname]','$_POST[mobilenumber]','$_POST[select3]','$_POST[loginid]','$_POST[password]','Active','$_POST[education]','$_POST[experience]','$_POST[consultancy_charge]')";
+	$sql ="INSERT INTO doctor(doctorname,mobileno,departmentid,loginid,password,status,education,experience) values('$_POST[doctorname]','$_POST[mobilenumber]','$_POST[select3]','$_POST[loginid]','$_POST[password]','Active','$_POST[education]','$_POST[experience]')";
 	if($qsql = mysqli_query($con,$sql))
 	{
 		echo "<script>alert('Doctor record inserted successfully...');</script>";
@@ -77,7 +77,7 @@ if(isset($_GET[editid]))
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
     			<div class="col-lg-2 pr-4 align-items-center">
-		    		<a class="navbar-brand" href="index.html">Cairo.<span>Hospital</span></a>
+		    		<a class="navbar-brand" >Cairo.<span>Hospital</span></a>
 	    		</div>
 	    		<div class="col-lg-10 d-none d-md-block">
 		    		<div class="row d-flex">
@@ -160,10 +160,7 @@ if(isset($_GET[editid]))
           <td>Experience</td>
           <td><input type="text" name="experience" id="experience" value="<?php echo $rsedit[experience]; ?>"/></td>
         </tr>
-        <tr>
-          <td>Consultancy Charge</td>
-          <td><input type="text" name="consultancy_charge" id="consultancy_charge" value="<?php echo $rsedit[experience]; ?>"/></td>
-        </tr>
+      
         <tr>
           <td>Status</td>
           <td><select name="select" id="select">
@@ -191,15 +188,20 @@ if(isset($_GET[editid]))
     </table>
     </form>
     <p>&nbsp;</p>
+	<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
   </div>
 </div>
 </div>
  <div class="clear"></div>
   </div>
 </div>
-<?php
-include("footer.php");
-?>
+
 <script type="application/javascript">
 var alphaExp = /^[a-zA-Z]+$/; //Variable to validate only alphabets
 var alphaspaceExp = /^[a-zA-Z\s]+$/; //Variable to validate only alphabets and space

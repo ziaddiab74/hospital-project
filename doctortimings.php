@@ -77,7 +77,7 @@ if(isset($_GET[editid]))
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
     			<div class="col-lg-2 pr-4 align-items-center">
-		    		<a class="navbar-brand" href="index.html">Cairo.<span>Hospital</span></a>
+		    		<a class="navbar-brand" >Cairo.<span>Hospital</span></a>
 	    		</div>
 	    		<div class="col-lg-10 d-none d-md-block">
 		    		<div class="row d-flex">
@@ -179,15 +179,20 @@ if(isset($_GET[editid]))
     </table>
     </form>
     <p>&nbsp;</p>
+	<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
   </div>
 </div>
 </div>
  <div class="clear"></div>
   </div>
 </div>
-<?php
-include("footer.php");
-?>
+
 <script type="application/javascript">
 function validateform()
 {
