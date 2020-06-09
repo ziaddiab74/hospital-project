@@ -165,31 +165,17 @@ input[type=number]{
 </style>
 </head>
 <body>
-<div class="wrapper col1 "style=background-color:#77AADD>
 
-  <div id="head">
+
+
     
     <div id="topnav" >
       <ul>
-        <li><a  href="index.php" <?php if(basename($_SERVER['PHP_SELF']) == "index.php"){ echo ' class="active"'; } ?> >Home</a></li>
-        <li><a href="aboutus.php" <?php if(basename($_SERVER['PHP_SELF']) == "aboutus.php"){ echo ' class="active"'; } ?>>About US</a></li>
-<?php
-if(!isset($_SESSION[patientid]))
-{
-?>        
-        <li><a href="patientappointment.php" <?php if(basename($_SERVER['PHP_SELF']) == "patientappointment.php"){ echo ' class="active"'; } ?>>Online Appointment</a></li>
-        <li><a href="patientlogin.php" <?php if(basename($_SERVER['PHP_SELF']) == "patientlogin.php"){ echo ' class="active"'; } ?>>Login</a></li>        
-        <li><a href="patient.php" <?php if(basename($_SERVER['PHP_SELF']) == "patient.php"){ echo ' class="active"'; } ?>>Registration</a></li>
-<?php
-}
-else
-{
-?>
-<li><a href="patientappointment.php" <?php if(basename($_SERVER['PHP_SELF']) == "patientappointment.php"){ echo ' class="active"'; } ?>>Online Appointment</a></li>
-<?php
-}
-?>        
-        <li class="last"><a href="contactus.php" <?php if(basename($_SERVER['PHP_SELF']) == "contactus.php"){ echo ' class="active"'; } ?>>Contact US</a></li></ul>
+       
+
+   
+   
+      
     </div>
    
   </div>
