@@ -77,7 +77,7 @@ if(isset($_GET[editid]))
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
     			<div class="col-lg-2 pr-4 align-items-center">
-		    		<a class="navbar-brand" href="index.html">Cairo.<span>Hospital</span></a>
+		    		<a class="navbar-brand" >Cairo.<span>Hospital</span></a>
 	    		</div>
 	    		<div class="col-lg-10 d-none d-md-block">
 		    		<div class="row d-flex">
@@ -226,46 +226,20 @@ jQuery(document).ready(function($) {
 
 
 
-<?php
-if(isset($_SESSION[adminid]))
-{
-?>
-    <!-- Toggle #6 -->
-    <div class="toggle">
-        <!-- Toggle Link -->
-        <a href="#" title="Title of Toggle" class="toggle-trigger">Payment Report</a>
-        <!-- Toggle Content to display -->
-        <div class="toggle-content">
-            <p><?php
-            $billappointmentid= $rsappointment[0]; 
-            include("viewpaymentreport.php"); ?>
-                      <?php
-                if(!isset($_SESSION[patientid]))
-                {
-					
-	$sqlbilling_records ="SELECT * FROM billing WHERE appointmentid='$billappointmentid'";
-	$qsqlbilling_records = mysqli_query($con,$sqlbilling_records);
-	$rsbilling_records = mysqli_fetch_array($qsqlbilling_records);
-	if($rsbilling_records[discharge_date] == "0000-00-00")
-	{
-				  ?>  
-				  <table width="557" border="3">
-			  <tbody>
-				<tr>
-				  <th scope="col"><div align="center"><a href="paymentdischarge.php?appointmentid=<?php echo $rsappointment[0]; ?>&patientid=<?php echo $_GET[patientid]; ?>">Make Payment</a></div></th>
-				</tr>
-			  </tbody>
-			</table>
-			<?php
-	}
-                }
-                ?>
+
+        
+			<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+			
             </p>
         </div><!-- .toggle-content (end) -->
     </div><!-- .toggle (end) -->
-<?php
-}
-?>
+
     </p>
   </div>
 </div>
@@ -273,6 +247,4 @@ if(isset($_SESSION[adminid]))
  <div class="clear"></div>
   </div>
 </div>
-<?php
-include("footer.php");
-?>
+
