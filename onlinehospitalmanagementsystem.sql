@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2020 at 09:16 PM
+-- Generation Time: Jun 12, 2020 at 07:00 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -51,7 +51,6 @@ INSERT INTO `admin` (`adminid`, `adminname`, `loginid`, `password`, `status`) VA
 
 CREATE TABLE `appointment` (
   `appointmentid` int(10) NOT NULL,
-  `appointmenttype` varchar(25) NOT NULL,
   `patientid` int(10) NOT NULL,
   `departmentid` int(10) NOT NULL,
   `appointmentdate` date NOT NULL,
@@ -65,9 +64,11 @@ CREATE TABLE `appointment` (
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`appointmentid`, `appointmenttype`, `patientid`, `departmentid`, `appointmentdate`, `appointmenttime`, `doctorid`, `status`, `app_reason`) VALUES
-(126, '', 59, 12, '2020-11-11', '11:11:00', 62, 'Approved', 'hahahahah'),
-(127, '', 59, 12, '2020-08-02', '11:11:00', 62, 'Approved', 'bbbbbbbbbbbbbbb');
+INSERT INTO `appointment` (`appointmentid`, `patientid`, `departmentid`, `appointmentdate`, `appointmenttime`, `doctorid`, `status`, `app_reason`) VALUES
+(131, 59, 12, '2020-11-11', '11:11:00', 62, 'Approved', 'nnnnnnn'),
+(132, 59, 11, '2020-11-11', '11:11:00', 63, 'Approved', 'habd'),
+(133, 59, 20, '2021-11-01', '03:33:00', 72, 'Approved', 'non'),
+(134, 97, 11, '2021-02-22', '23:11:00', 73, 'Approved', '.......');
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,8 @@ INSERT INTO `contactus` (`name`, `message`) VALUES
 ('ziad', '.................'),
 ('ziad', 'ziad'),
 ('ziad', 'ziad'),
-('omar ', 'i have a problem with ....................');
+('omar ', 'i have a problem with ....................'),
+('ziad diab', 'problem with ....');
 
 -- --------------------------------------------------------
 
@@ -110,7 +112,6 @@ CREATE TABLE `department` (
 INSERT INTO `department` (`departmentid`, `departmentname`, `description`, `status`) VALUES
 (11, 'Physician', 'All type of disease', 'Active'),
 (12, 'Children doctor', 'All kinds of disease', 'Active'),
-(13, 'General Medicne1', 'General doctor', 'Active'),
 (14, 'ENT Specialist', 'Ear, Nose and Tongue Doctor', 'Active'),
 (15, 'Neurologist', 'Related neurons, bones', 'Active'),
 (16, 'Surgery', 'Includes plastic surgery, brain and neurology surgery', 'Active'),
@@ -142,7 +143,24 @@ CREATE TABLE `doctor` (
 --
 
 INSERT INTO `doctor` (`doctorid`, `doctorname`, `mobileno`, `departmentid`, `loginid`, `password`, `status`, `education`, `experience`) VALUES
-(62, 'ziad', '01100036613', 12, '10', '12345678', 'Active', 'surgery', 233);
+(63, 'dr khaled yousseff', '01116789393', 11, '1', '87654321', 'Active', 'Physician', 11),
+(64, 'dr moaaz diab', '01100036614', 12, '2', '12345678', 'Active', 'Children', 15),
+(66, 'dr ashraf shenawy', '01011457595', 14, '4', '12345678', 'Active', 'specialist', 20),
+(67, 'dr anwar salama', '01200027762', 15, '5', '12345678', 'Active', 'Neurologist', 22),
+(68, 'dr mohamed salah', '01005079955', 16, '6', '12345678', 'Active', 'Surgery', 21),
+(69, 'dr omar badry', '01112346655', 17, '7', '12345678', 'Active', 'pediatrics', 25),
+(70, 'dr khaled husssen', '01188823315', 18, '8', '12345678', 'Active', 'Pharmacy', 12),
+(71, 'dr khedr hassan', '01002876221', 19, '9', '12345678', 'Active', 'laboratory', 16),
+(72, 'dr omar ashraf', '01266634491', 20, '11', '12345678', 'Active', 'physiotherapy', 19),
+(73, 'dr ashraf hassan', '01188854416', 11, '10', '123456789', 'Active', 'Physician', 24),
+(74, 'dr abdelrahman salama', '0100673345', 12, '12', '87654321', 'Active', 'Children', 13),
+(76, 'dr nader seif', '01146573392', 14, '13', '98765432', 'Active', 'specialist', 22),
+(77, 'dr mohamed khaled', '01114237743', 15, '14', '23456789', 'Active', 'Neurologist', 27),
+(78, 'dr abdelaziz mohemed', '01000025367', 16, '15', '12345678', 'Active', 'Surgery', 11),
+(79, 'dr ziad atef', '01100036613', 17, '16', '12345678', 'Active', 'pediatrics', 9),
+(80, 'dr atef essam', '01136600014', 18, '17', '12345678', 'Active', 'Pharmacy', 29),
+(81, 'dr osama sarag', '01116342877', 19, '18', '12345678', 'Active', 'laboratory', 18),
+(82, 'dr ahmad khaled', '010067568759', 20, '19', '12345678', 'Active', 'physiotherapy', 21);
 
 -- --------------------------------------------------------
 
@@ -158,6 +176,13 @@ CREATE TABLE `doctor_timings` (
   `available_day` varchar(15) NOT NULL,
   `status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `doctor_timings`
+--
+
+INSERT INTO `doctor_timings` (`doctor_timings_id`, `doctorid`, `start_time`, `end_time`, `available_day`, `status`) VALUES
+(32, 63, '11:11:00', '13:01:00', '', 'Active');
 
 -- --------------------------------------------------------
 
@@ -187,14 +212,10 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`patientid`, `patientname`, `admissiondate`, `admissiontime`, `address`, `mobileno`, `city`, `pincode`, `loginid`, `password`, `bloodgroup`, `gender`, `dob`, `status`) VALUES
-(59, 'ziad diab', '2020-06-06', '17:36:59', 'obour', '01100036613', 'cairo', '74', '74', '12345678', 'AB+', 'MALE', '2020-06-06', 'Active'),
-(60, 'omar badry', '2020-06-06', '20:39:45', '..............', '01100036613e', 'cairo', '22', '22', '12345678', 'O+', 'MALE', '1999-02-21', 'Active'),
-(61, 'ziaddd', '2020-06-06', '20:45:15', '', '', '', '', '', '', '', '', '0000-00-00', 'Active'),
-(62, 'ziad diab', '2020-06-06', '21:00:34', 'mm', '01100036613', 'cairo', '74', '101', '123456', 'O+', 'MALE', '2010-11-11', 'Active'),
-(63, 'bbbbb', '2020-06-06', '21:03:35', 'bbbbbbbb', '01100036613', 'cairo', '22', 'ziad ', '123456', 'O-', 'MALE', '1999-11-11', 'Active'),
-(64, 'ziad diab', '2020-06-06', '21:05:45', 'mmmmm', '01100036613', 'cairo', '22', '74', '1234567', 'O-', 'MALE', '1999-11-11', 'Active'),
-(65, 'ziad diab', '2020-06-06', '21:31:49', 'bbbb', '01100036613', 'cairo', '74', '10', '123456', 'B-', 'MALE', '1999-11-11', 'Active'),
-(66, 'omar badry', '2020-06-06', '21:34:56', 'bbbbbbbbb', '01100036613', 'cairo', '22', '144', '123456', 'O-', 'MALE', '1999-11-11', 'Active');
+(59, 'ziad diab', '2020-06-06', '17:36:59', '  obour', '01100036613', 'cairo', '74', '75', '12345678', 'O+', 'MALE', '2020-06-06', 'Active'),
+(74, 'omar badry', '2020-06-11', '18:45:13', 'masr gdeeda', '01116789988', 'cairo', '11511', '20', '25d55ad283aa400af464c76d7', 'A+', 'MALE', '2000-11-11', 'Active'),
+(75, 'youssef', '2020-06-11', '18:46:49', '.............', '01116789999', 'cairo', '11511', '10', '25d55ad283aa400af464c76d7', 'O-', 'MALE', '1999-06-06', 'Active'),
+(97, 'abdelrahman ', '2020-06-12', '18:23:47', 'masr gdeeda', '01116785544', 'cairo', '11511', '14', '25d55ad283aa400af464c76d7', 'A+', 'MALE', '2000-11-11', 'Active');
 
 -- --------------------------------------------------------
 
@@ -216,9 +237,10 @@ CREATE TABLE `prescription` (
 --
 
 INSERT INTO `prescription` (`prescriptionid`, `doctorid`, `patientid`, `prescriptiondate`, `status`, `appointmentid`) VALUES
-(108, 62, 59, '2020-11-22', 'Active', 0),
-(109, 62, 59, '2222-02-22', 'Active', 0),
-(110, 62, 59, '2020-06-30', 'Active', 0);
+(112, 62, 59, '2020-11-11', 'Active', 0),
+(113, 63, 59, '2020-11-11', 'Active', 0),
+(114, 72, 59, '2022-11-11', 'Active', 0),
+(115, 73, 97, '2020-11-11', 'Active', 0);
 
 -- --------------------------------------------------------
 
@@ -238,10 +260,11 @@ CREATE TABLE `prescription_records` (
 --
 
 INSERT INTO `prescription_records` (`prescription_record_id`, `prescription_id`, `diagnose`, `status`) VALUES
-(158, 108, 'jkdndndndndndn', 'Active'),
-(159, 108, 'bsbsbsbsnb', 'Active'),
-(160, 108, 'jssjnsjnsjnsjnxj', 'Active'),
-(161, 109, 'lllllllllllllllllllll', 'Active');
+(163, 112, 'bsbsbsbsnb', 'Active'),
+(164, 112, 'tdftedfetdtfdfed', 'Active'),
+(165, 113, 'hahahahaha', 'Active'),
+(166, 114, '///////////////////', 'Active'),
+(167, 115, 'panadol', 'Active');
 
 -- --------------------------------------------------------
 
@@ -304,6 +327,7 @@ ALTER TABLE `doctor_timings`
 --
 ALTER TABLE `patient`
   ADD PRIMARY KEY (`patientid`),
+  ADD UNIQUE KEY `loginid_2` (`loginid`),
   ADD KEY `loginid` (`loginid`);
 
 --
@@ -338,7 +362,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `appointment`
 --
 ALTER TABLE `appointment`
-  MODIFY `appointmentid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `appointmentid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT for table `department`
@@ -350,31 +374,31 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `doctorid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `doctorid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `doctor_timings`
 --
 ALTER TABLE `doctor_timings`
-  MODIFY `doctor_timings_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `doctor_timings_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `patientid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `patientid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `prescription`
 --
 ALTER TABLE `prescription`
-  MODIFY `prescriptionid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `prescriptionid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT for table `prescription_records`
 --
 ALTER TABLE `prescription_records`
-  MODIFY `prescription_record_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=162;
+  MODIFY `prescription_record_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
 
 --
 -- AUTO_INCREMENT for table `receptionist`
