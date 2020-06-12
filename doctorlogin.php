@@ -73,7 +73,7 @@ if(isset($_POST[submit]))
 					    </div>
 					    <div class="col-md pr-4 d-flex topper align-items-center">
 					    	<div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-						    <span class="text">Email: ziaddiab74@l@email.com</span>
+						    <span class="text">Email: ziaddiab74@gmail.com</span>
 					    </div>
 					    <div class="col-md pr-4 d-flex topper align-items-center">
 					    	<div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>

@@ -5,7 +5,7 @@ if(isset($_POST[submit]))
 {
 	if(isset($_GET[editid]))
 	{
-		$sql ="UPDATE prescription SET ,doctorid='$_POST[select2]',patientid='$_POST[patientid]',prescriptiondate='$_POST[date]',status='$_POST[select]' WHERE prescription_id='$_GET[editid]'";
+		$sql ="UPDATE prescription SET doctorid='$_POST[select2]',patientid='$_POST[patientid]',prescriptiondate='$_POST[date]',status='$_POST[select]' WHERE prescription_id='$_GET[editid]'";
 		if($qsql = mysqli_query($con,$sql))
 		{
 			echo "<script>alert('prescription record updated successfully...');</script>";
@@ -17,7 +17,7 @@ if(isset($_POST[submit]))
 	}
 	else
 	{
-		$sql ="INSERT INTO prescription(doctorid,patientid,prescriptiondate,status,appointmentid) values('$_POST[select2]','$_POST[patientid]','$_POST[date]','Active','$_GET[appid]')";
+		$sql ="INSERT INTO prescription(doctorid,patientid,prescriptiondate,status,appointmentid) values('$_POST[select2]','$_POST[patientid]','$_POST[date]','Active','$_GET[appointmentid]')";
 		if($qsql = mysqli_query($con,$sql))
 		{
 			$insid= mysqli_insert_id($con);
@@ -84,7 +84,7 @@ if(isset($_GET[editid]))
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
     			<div class="col-lg-2 pr-4 align-items-center">
-		    		<a class="navbar-brand" href="index.html">Cairo.<span>Hospital</span></a>
+		    		<a class="navbar-brand" >Cairo.<span>Hospital</span></a>
 	    		</div>
 	    		<div class="col-lg-10 d-none d-md-block">
 		    		<div class="row d-flex">

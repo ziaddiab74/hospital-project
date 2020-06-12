@@ -1,19 +1,6 @@
 <?php
-include("headerr.php");
-include("dbconnection.php");
-if(isset($_POST[submit]))
-{
-$sql ="INSERT INTO contactus (name,message) values('$_POST[name]','$_POST[message]')";
-if($qsql = mysqli_query($con,$sql))
-{
-	echo "<script>alert('comment added successfully...');</script>";
-}
-else
-{
-	echo mysqli_error($con);
-}
-}
-	?>
+include("header.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -79,43 +66,28 @@ else
 <div class="wrapper col2">
   <div id="breadcrumb">
     <ul>
-      <li class="first">Contact Us</li>
-    </ul>
+      <li class="first">Add New Forgot Password</li></ul>
   </div>
 </div>
 <div class="wrapper col4">
   <div id="container">
-   
-
-        <h6>Contact Us by entering following information</h6>
-            <form action="" method="post">
-          <p>
-            <input type="text" name="name" id="name" value="" size="22" required />
-            <label for="name"><small>FullName (required)</small></label>
-          </p>
-         
-          <p>
-            <textarea name="message" id="message" cols="100%" rows="10" required></textarea>
-            <label for="message" style="display:none;"><small>Comment (required)</small></label>
-          </p>
-          <p>
-            <input name="submit" type="submit" id="submit" value="Submit Form"  />
-            &nbsp;
-            <input name="reset" type="reset" id="reset" tabindex="5" value="Reset Form" />
-          </p>
-        </form>
-		<button onclick="goBack()">Go Back</button>
-
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
+    <h1>Add new Forgot Password record</h1>
+    <table width="200" border="3">
+      <tbody>
+        <tr>
+          <td width="34%">login ID</td>
+          <td width="66%"><input type="text" name="loginid" id="loginid" /></td>
+        </tr>
+        <tr>
+          <td height="36" colspan="2" align="center"><input type="submit" name="submit" id="submit" value="Submit" /></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>&nbsp;</p>
   </div>
-  
 </div>
-
-    <div class="clear"></div>
+</div>
+ <div class="clear"></div>
   </div>
 </div>
 <?php

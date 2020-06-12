@@ -1,19 +1,6 @@
 <?php
 include("headerr.php");
-include("dbconnection.php");
-if(isset($_POST[submit]))
-{
-$sql ="INSERT INTO contactus (name,message) values('$_POST[name]','$_POST[message]')";
-if($qsql = mysqli_query($con,$sql))
-{
-	echo "<script>alert('comment added successfully...');</script>";
-}
-else
-{
-	echo mysqli_error($con);
-}
-}
-	?>
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -76,48 +63,33 @@ else
 		    </div>
 		  </div>
     </nav>
-<div class="wrapper col2">
-  <div id="breadcrumb">
-    <ul>
-      <li class="first">Contact Us</li>
-    </ul>
-  </div>
-</div>
+
 <div class="wrapper col4">
   <div id="container">
-   
+    <div id="content">
+      <h1>About Cairo. Hospital</h1>
+      
+ <p>The team at Cairo.Hospital Physiotherapy are passionate about helping you achieve your goals to maximise your lifestyle choices and improve your health and wellbeing. We are committed to providing a high quality service to assist you in a number of different areas and across the entire lifespan.</p>
+ <h2>This may include:</h2>
+    <p>Maintaining a fit and healthy body during pregnancy</p>
+    <p>Treatment and management of pelvic girdle pain (Pelvic Instability)</p>
+    <p>Rehabilitating your body after pregnancy</p>
+    <p>MRehabilitating your pelvic floor muscles</p>
+    <p>Returning to running and other high level exercise</p>
+    <p>Improving bone strength and Osteoporosis</p>
+    <p>Treatment and management of general musculoskeletal conditions</p>
+    <p> Clinical Physio Classes and supervised exercise classes</p>
+    <p> Pre and post operation physiotherapy</p>
+    <p> Exercise for 50+ year olds</p>
 
-        <h6>Contact Us by entering following information</h6>
-            <form action="" method="post">
-          <p>
-            <input type="text" name="name" id="name" value="" size="22" required />
-            <label for="name"><small>FullName (required)</small></label>
-          </p>
-         
-          <p>
-            <textarea name="message" id="message" cols="100%" rows="10" required></textarea>
-            <label for="message" style="display:none;"><small>Comment (required)</small></label>
-          </p>
-          <p>
-            <input name="submit" type="submit" id="submit" value="Submit Form"  />
-            &nbsp;
-            <input name="reset" type="reset" id="reset" tabindex="5" value="Reset Form" />
-          </p>
-        </form>
-		<button onclick="goBack()">Go Back</button>
+    <div class="clear">
+    <button onclick="goBack()">Go Back</button>
 
 <script>
 function goBack() {
   window.history.back();
 }
-</script>
+</script></div>
   </div>
-  
 </div>
 
-    <div class="clear"></div>
-  </div>
-</div>
-<?php
-include("footer.php");
-?>

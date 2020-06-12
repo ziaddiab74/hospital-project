@@ -84,7 +84,7 @@ include("header.php");
   
     <h1>Number of Appointment Records :     
     <?php
-	$sql = "SELECT * FROM appointment WHERE status='Active'";
+	$sql = "SELECT * FROM appointment WHERE status='approved'";
 	if(isset($_GET[date]))
 	{
 		$sql = $sql . " AND appointmentdate ='$_GET[date]'";

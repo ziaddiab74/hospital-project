@@ -53,7 +53,7 @@ if(isset($_GET[delid]))
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
     			<div class="col-lg-2 pr-4 align-items-center">
-		    		<a class="navbar-brand" href="index.html">Cairo.<span>Hospital</span></a>
+		    		<a class="navbar-brand" >Cairo.<span>Hospital</span></a>
 	    		</div>
 	    		<div class="col-lg-10 d-none d-md-block">
 		    		<div class="row d-flex">
@@ -63,7 +63,7 @@ if(isset($_GET[delid]))
 					    </div>
 					    <div class="col-md pr-4 d-flex topper align-items-center">
 					    	<div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-						    <span class="text">Email: ziaddiab74@l@email.com</span>
+						    <span class="text">Email: ziaddiab74@gmail.com</span>
 					    </div>
 					    <div class="col-md pr-4 d-flex topper align-items-center">
 					    	<div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>

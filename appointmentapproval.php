@@ -8,7 +8,7 @@ if(isset($_POST[submit]))
 				$sql ="UPDATE patient SET status='Active' WHERE patientid='$_GET[patientid]'";
 				$qsql=mysqli_query($con,$sql);
 			
-			$sql ="UPDATE appointment SET appointmenttype='$_POST[apptype]'='$_POST[select3]',departmentid='$_POST[select5]',doctorid='$_POST[select6]',status='Approved',appointmentdate='$_POST[appointmentdate]',appointmenttime='$_POST[time]' WHERE appointmentid='$_GET[editid]'";
+			$sql ="UPDATE appointment SET departmentid='$_POST[select5]',doctorid='$_POST[select6]',status='Approved',appointmentdate='$_POST[appointmentdate]',appointmenttime='$_POST[time]' WHERE appointmentid='$_GET[editid]'";
 			if($qsql = mysqli_query($con,$sql))
 			{
 				
@@ -26,7 +26,7 @@ if(isset($_POST[submit]))
 			$sql ="UPDATE patient SET status='Active' WHERE patientid='$_POST[select4]'";
 			$qsql=mysqli_query($con,$sql);
 				
-			$sql ="INSERT INTO appointment(appointmenttype,patientid,departmentid,appointmentdate,appointmenttime,doctorid,status) values('$_POST[select2]','$_POST[select4]','$_POST[select3]','$_POST[select5]','$_POST[appointmentdate]','$_POST[time]','$_POST[select6]','$_POST[select]')";
+			$sql ="INSERT INTO appointment(patientid,departmentid,appointmentdate,appointmenttime,doctorid,status) values('$_POST[select2]','$_POST[select4]','$_POST[select5]','$_POST[appointmentdate]','$_POST[time]','$_POST[select6]','$_POST[select]')";
 			if($qsql = mysqli_query($con,$sql))
 			{
 				echo "<script>alert('Appointment record inserted successfully...');</script>";

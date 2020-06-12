@@ -80,7 +80,7 @@ include("header.php");
     <h1>Welcome <?php echo $rsdoctorprofile[doctorname]; ?> </h1>
      <h1>Number of Appointment Records : 
     <?php
-	$sql = "SELECT * FROM appointment WHERE status='Active'";
+	$sql = "SELECT * FROM appointment WHERE status='approved'";
 	$qsql = mysqli_query($con,$sql);
 	echo mysqli_num_rows($qsql);
 	?>

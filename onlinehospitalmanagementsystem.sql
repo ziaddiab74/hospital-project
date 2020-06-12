@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2020 at 04:27 PM
+-- Generation Time: Jun 08, 2020 at 09:16 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -77,9 +77,18 @@ INSERT INTO `appointment` (`appointmentid`, `appointmenttype`, `patientid`, `dep
 
 CREATE TABLE `contactus` (
   `name` varchar(250) NOT NULL,
-  `loginid` int(250) NOT NULL,
   `message` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contactus`
+--
+
+INSERT INTO `contactus` (`name`, `message`) VALUES
+('ziad', '.................'),
+('ziad', 'ziad'),
+('ziad', 'ziad'),
+('omar ', 'i have a problem with ....................');
 
 -- --------------------------------------------------------
 
@@ -249,6 +258,13 @@ CREATE TABLE `receptionist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `receptionist`
+--
+
+INSERT INTO `receptionist` (`receptionistid`, `receptionistname`, `loginid`, `password`, `status`) VALUES
+(1, 'ziadd', 'ziad', '12345678', 'Active');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -364,7 +380,7 @@ ALTER TABLE `prescription_records`
 -- AUTO_INCREMENT for table `receptionist`
 --
 ALTER TABLE `receptionist`
-  MODIFY `receptionistid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `receptionistid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -25,7 +25,7 @@ if(isset($_POST[submit]))
 			if($qsql = mysqli_query($con,$sql))
 			{
 				
-				include("insertbillingrecord.php");	
+			
 				echo "<script>alert('Appointment record inserted successfully...');</script>";
 				echo "<script>window.location='patientreport.php?patientid=$_POST[select4]';</script>";
 			}

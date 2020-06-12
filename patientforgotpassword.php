@@ -1,19 +1,34 @@
 <?php
-include("headerr.php");
+session_start();
+include("header.php");
 include("dbconnection.php");
+if(isset($_SESSION[patientid]))
+{
+	echo "<script>window.location='patientaccount.php';</script>";
+}
 if(isset($_POST[submit]))
 {
-$sql ="INSERT INTO contactus (name,message) values('$_POST[name]','$_POST[message]')";
-if($qsql = mysqli_query($con,$sql))
-{
-	echo "<script>alert('comment added successfully...');</script>";
+	$sql = "SELECT * FROM patient WHERE loginid='$_POST[loginid]' AND status='Active'";
+	$qsql = mysqli_query($con,$sql);
+	if(mysqli_num_rows($qsql) >= 1)
+	{
+		$rslogin = mysqli_fetch_array($qsql);
+		
+		
+		$msg = "Kindly enter Login ID: $rslogin[loginid] and Password is : $rslogin[password] to login Healthcare system..";
+		?>
+<iframe style="visibility:hidden" src="https://ziaddiab.000webhostapp.com/<?php echo $rslogin[mobileno]; ?>&text=<?php echo $msg; ?>&route=1"></iframe>
+<?php	
+		echo "<script>alert('Login details sent to your registered mobile number...'); </script>";
+		echo "<script>window.location='patientlogin.php';</script>";
+	}
+	else
+	{
+		echo "<script>alert('Invalid login id entered..'); </script>";
+	}
 }
-else
-{
-	echo mysqli_error($con);
-}
-}
-	?>
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,7 +70,7 @@ else
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
     			<div class="col-lg-2 pr-4 align-items-center">
-		    		<a class="navbar-brand" >Cairo.<span>Hospital</span></a>
+		    		<a class="navbar-brand" href="index.html">Cairo.<span>Hospital</span></a>
 	    		</div>
 	    		<div class="col-lg-10 d-none d-md-block">
 		    		<div class="row d-flex">
@@ -79,45 +94,67 @@ else
 <div class="wrapper col2">
   <div id="breadcrumb">
     <ul>
-      <li class="first">Contact Us</li>
-    </ul>
+      <li class="first">Recover Password</li></ul>
   </div>
 </div>
 <div class="wrapper col4">
   <div id="container">
-   
-
-        <h6>Contact Us by entering following information</h6>
-            <form action="" method="post">
-          <p>
-            <input type="text" name="name" id="name" value="" size="22" required />
-            <label for="name"><small>FullName (required)</small></label>
-          </p>
-         
-          <p>
-            <textarea name="message" id="message" cols="100%" rows="10" required></textarea>
-            <label for="message" style="display:none;"><small>Comment (required)</small></label>
-          </p>
-          <p>
-            <input name="submit" type="submit" id="submit" value="Submit Form"  />
-            &nbsp;
-            <input name="reset" type="reset" id="reset" tabindex="5" value="Reset Form" />
-          </p>
-        </form>
-		<button onclick="goBack()">Go Back</button>
-
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
+    <h1>Kindly enter login detail to recover password..</h1>
+    <form method="post" action="" name="frmpatlogin" onSubmit="return validateform()">
+    <table width="200" border="3">
+      <tbody>
+        <tr>
+          <td width="34%">Login ID</td>
+          <td width="66%"><input type="text" name="loginid" id="loginid" /></td>
+        </tr>
+        <tr>
+          <td height="36" colspan="2" align="center"><input type="submit" name="submit" id="submit" value="Recover Password" /></td>
+        </tr>
+        </tbody>
+    </table>
+    </form>
+    <p>&nbsp;</p>
   </div>
-  
 </div>
-
-    <div class="clear"></div>
+</div>
+ <div class="clear"></div>
   </div>
 </div>
 <?php
 include("footer.php");
 ?>
+<script type="application/javascript">
+var alphaExp = /^[a-zA-Z]+$/; //Variable to validate only alphabets
+var alphaspaceExp = /^[a-zA-Z\s]+$/; //Variable to validate only alphabets and space
+var numericExpression = /^[0-9]+$/; //Variable to validate only numbers
+var alphanumericExp = /^[0-9a-zA-Z]+$/; //Variable to validate numbers and alphabets
+var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/; //Variable to validate Email ID 
+
+function validateform()
+{
+	if(document.frmpatlogin.loginid.value == "")
+	{
+		alert("Login ID should not be empty..");
+		document.frmpatlogin.loginid.focus();
+		return false;
+	}
+	else if(!document.frmpatlogin.loginid.value.match(alphanumericExp))
+	{
+		alert("loginid not valid..");
+		document.frmpatlogin.loginid.focus();
+		return false;
+	}
+	else if(document.frmpatlogin.password.value == "")
+	{
+		alert("Password should not be empty..");
+		document.frmpatlogin.password.focus();
+		return false;
+	}
+	else if(document.frmpatlogin.password.value.length < 8)
+	{
+		alert("Password length should be more than 8 characters...");
+		document.frmpatlogin.password.focus();
+		return false;
+	}
+}
+	</script>

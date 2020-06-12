@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("dbconnection.php");
-if(!isset($_SESSION[patientid]))
+if(!isset($_SESSION['patientid']))
 {
 	echo "<script>window.location='patientlogin.php';</script>";
 }
@@ -56,7 +56,7 @@ $rspatientappointment = mysqli_fetch_array($qsqlpatientappointment);
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
     			<div class="col-lg-2 pr-4 align-items-center">
-		    		<a class="navbar-brand" href="index.html">Cairo.<span>Hospital</span></a>
+		    		<a class="navbar-brand" >Cairo.<span>Hospital</span></a>
 	    		</div>
 	    		<div class="col-lg-10 d-none d-md-block">
 		    		<div class="row d-flex">
@@ -109,6 +109,3 @@ else
     <div class="clear"></div>
   </div>
 </div>
-<?php
-include("footer.php");
-?>
