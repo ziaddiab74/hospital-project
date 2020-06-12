@@ -210,31 +210,7 @@ if(isset($_SESSION[adminid]))
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
-  <nav class="navbar py-4 navbar-expand-lg ftco_navbar navbar-light bg-light flex-row">
-    	<div class="container">
-    		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
-    			<div class="col-lg-2 pr-4 align-items-center">
-		    		<a class="navbar-brand" href="index.html">Cairo.<span>Hospital</span></a>
-	    		</div>
-	    		<div class="col-lg-10 d-none d-md-block">
-		    		<div class="row d-flex">
-			    		<div class="col-md-4 pr-4 d-flex topper align-items-center">
-			    			<div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-map"></span></div>
-						    <span class="text">Address: 198 West 21th Street, Australia</span>
-					    </div>
-					    <div class="col-md pr-4 d-flex topper align-items-center">
-					    	<div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
-						    <span class="text">Email: ziaddiab74@l@email.com</span>
-					    </div>
-					    <div class="col-md pr-4 d-flex topper align-items-center">
-					    	<div class="icon bg-white mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-						    <span class="text">Phone: 01100036613</span>
-					    </div>
-				    </div>
-			    </div>
-		    </div>
-		  </div>
-    </nav>
+  
 <div id="mmenu">
 <li><a href="adminaccount.php">Account</a></li>
 <li>
@@ -246,6 +222,7 @@ if(isset($_SESSION[adminid]))
     	<li><a href="viewadmin.php" style="width:150px;">View Admin</a></li>
     </ul>
 </li>
+
 <li><a href=" ######### ">Patient</a>
     <ul>
    <li><a href="patient.php">Add Patient</a></li>
@@ -262,6 +239,14 @@ if(isset($_SESSION[adminid]))
  </ul>
 </li>
 <li>
+<a href=" ######### ">Receptionist</a>
+    <ul>
+    <li><a href="receptionist.php">Add Receptionist</a></li>
+    <li><a href="viewreceptionist.php">View Receptionist</a></li>
+
+ </ul>
+</li>
+<li>
 <a href=" ######### ">Appointment</a>
     <ul>
     <li><a href="appointment.php" style="width:200px;">New Appointment</a></li>
@@ -272,15 +257,14 @@ if(isset($_SESSION[adminid]))
 
     
 <li>
-<a href=" ######### ">Settings</a>
+<a href=" ######### ">Departments</a>
     <ul>
   		
       
        	<li><a href="department.php" style="width:150px;">Add Department</a></li>
     	<li><a href="Viewdepartment.php" style="width:150px;">View Department</a></li>
         
-       	<li><a href="medicine.php" style="width:150px;">Add Medicine</a></li>
-    	<li><a href="Viewmedicine.php" style="width:150px;">View Medicine</a></li>
+      
       </ul>
 </li>
 <li><a href="logout.php">Log Out</a></li>
@@ -293,6 +277,8 @@ if(isset($_SESSION[doctorid]))
 {
 ?>
 <div id="mmenu">
+
+
     <li><a href="doctoraccount.php">Account</a></li>
     <li>
     <a href=" ######### ">Settings</a>
@@ -345,6 +331,56 @@ if(isset($_SESSION[patientid]))
 
 
 
+
+<li><a href="logout.php">Log Out</a></li>
+</div>
+<?php
+}
+?>
+
+
+
+<?php
+if(isset($_SESSION[receptionistid]))
+{
+?>
+<div id="mmenu">
+<li><a href="receptionistaccount.php">Account</a></li>
+
+<li>
+<a href=" ######### ">Profile</a>
+    <ul>
+    <li><a href="receptionistprofile.php">View Profile</a></li>
+    </ul>
+</li>
+
+
+
+
+
+<li>
+<a href=" ######### ">Appointment</a>
+        <ul>
+    <li><a href="viewappointmentapproved.php" style="width:250px;">View Approved Appointments</a></li>
+        
+      
+    <li><a href="patientappointment.php" style="width:200px;">Add Appointment</a></li>
+    
+   </ul>
+</li>
+<li><a href=" ######### ">Patient</a>
+    <ul>
+   <li><a href="patient.php">Add Patient</a></li>
+        <li><a href="viewpatient.php">View Patient Records</a></li>
+    </ul>
+</li>
+<li>
+<a href=" ######### ">Doctor</a>
+    <ul>
+    <li><a href="Viewdoctor.php">View Doctor</a></li>
+    <li><a href="viewdoctortimings.php">View Doctor Timings</a></li>
+ </ul>
+</li>
 
 <li><a href="logout.php">Log Out</a></li>
 </div>
