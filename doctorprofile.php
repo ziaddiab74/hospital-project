@@ -6,7 +6,7 @@ if(isset($_POST[submit]))
 {
 	if(isset($_SESSION[doctorid]))
 	{
-			$sql ="UPDATE doctor SET doctorname='$_POST[doctorname]',mobileno='$_POST[mobilenumber]',departmentid='$_POST[select3]',loginid='$_POST[loginid]',education='$_POST[education]',experience='$_POST[experience]',consultancy_charge='$_POST[consultancy_charge]' WHERE doctorid='$_SESSION[doctorid]'";
+			$sql ="UPDATE doctor SET doctorname='$_POST[doctorname]',mobileno='$_POST[mobilenumber]',departmentid='$_POST[select3]',loginid='$_POST[loginid]',education='$_POST[education]',experience='$_POST[experience]' WHERE doctorid='$_SESSION[doctorid]'";
 		if($qsql = mysqli_query($con,$sql))
 		{
 			echo "<script>alert('Doctor profile updated successfully...');</script>";
@@ -153,11 +153,7 @@ if(isset($_SESSION[doctorid]))
           <td>Experience</td>
           <td><input type="text" name="experience" id="experience" value="<?php echo $rsedit[experience]; ?>"/></td>
         </tr>
-        <tr>
-          <td>Consultancy charge</td>
-          <td>
-            <input type="text" name="consultancy_charge" id="consultancy_charge" value="<?php echo $rsedit[consultancy_charge]; ?>"/></td>
-        </tr>
+        
         <tr>
           <td colspan="2" align="center"><input type="submit" name="submit" id="submit" value="Submit" /></td>
         </tr>
