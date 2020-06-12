@@ -1,15 +1,19 @@
 
 <?php
 session_start();
-include("header.php");
+include("headerr.php");
 include("dbconnection.php");
+
 if(isset($_SESSION[patientid]))
 {
 	echo "<script>window.location='patientaccount.php';</script>";
 }
+
 if(isset($_POST[submit]))
 {
-	$sql = "SELECT * FROM patient WHERE loginid='$_POST[loginid]' AND password='$_POST[password]' AND status='Active'";
+
+  $sql = "SELECT * FROM patient WHERE loginid='$_POST[loginid]' AND password='$_POST[password]' AND status='Active'" ;
+  
 	$qsql = mysqli_query($con,$sql);
 	if(mysqli_num_rows($qsql) >= 1)
 	{
@@ -64,7 +68,7 @@ if(isset($_POST[submit]))
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
     			<div class="col-lg-2 pr-4 align-items-center">
-		    		<a class="navbar-brand" href="index.html">Cairo.<span>Hospital</span></a>
+		    		<a class="navbar-brand" >Cairo.<span>Hospital</span></a>
 	    		</div>
 	    		<div class="col-lg-10 d-none d-md-block">
 		    		<div class="row d-flex">
@@ -116,6 +120,13 @@ if(isset($_POST[submit]))
     </table>
     </form>
     <p>&nbsp;</p>
+    <button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
   </div>
 </div>
 </div>
