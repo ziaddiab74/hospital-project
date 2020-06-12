@@ -63,7 +63,7 @@ if(isset($_SESSION[patientid]))
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
     			<div class="col-lg-2 pr-4 align-items-center">
-		    		<a class="navbar-brand" href="index.html">Cairo.<span>Hospital</span></a>
+		    		<a class="navbar-brand" >Cairo.<span>Hospital</span></a>
 	    		</div>
 	    		<div class="col-lg-10 d-none d-md-block">
 		    		<div class="row d-flex">
@@ -178,15 +178,20 @@ if(isset($_SESSION[patientid]))
     </table>
     </form>
     <p>&nbsp;</p>
+	<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
   </div>
 </div>
 </div>
  <div class="clear"></div>
   </div>
 </div>
-<?php
-include("footer.php");
-?>
+
 <script type="application/javascript">
 var alphaExp = /^[a-zA-Z]+$/; //Variable to validate only alphabets
 var alphaspaceExp = /^[a-zA-Z\s]+$/; //Variable to validate only alphabets and space
@@ -269,12 +274,7 @@ function validateform()
 		document.frmpatprfl.loginid.focus();
 		return false;
 	}
-	else if(!document.frmpatprfl.loginid.value.match(emailExp))
-	{
-		alert("Login ID not valid..");
-		document.frmpatprfl.loginid.focus();
-		return false;
-	}
+	
 	else if(document.frmpatprfl.password.value == "")
 	{
 		alert("Password should not be empty..");
