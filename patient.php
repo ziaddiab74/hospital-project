@@ -1,10 +1,13 @@
 <?php
-include("header.php");
+include("headerr.php");
 include("dbconnection.php");
+
+
 if(isset($_POST[submit]))
 {
 	if(isset($_GET[editid]))
 	{
+ 
 			$sql ="UPDATE patient SET patientname='$_POST[patientname]',admissiondate='$_POST[admissiondate]',admissiontime='$_POST[admissiontme]',address='$_POST[address]',mobileno='$_POST[mobilenumber]',city='$_POST[city]',pincode='$_POST[pincode]',loginid='$_POST[loginid]',password='$_POST[password]',bloodgroup='$_POST[select2]',gender='$_POST[select3]',dob='$_POST[dateofbirth]',status='$_POST[select]' WHERE patientid='$_GET[editid]'";
 		if($qsql = mysqli_query($con,$sql))
 		{
@@ -17,9 +20,11 @@ if(isset($_POST[submit]))
 	}
 	else
 	{
-		
-	$sql ="INSERT INTO patient(patientname,admissiondate,admissiontime,address,mobileno,city,pincode,loginid,password,bloodgroup,gender,dob,status) values('$_POST[patientname]','$dt','$tim','$_POST[address]','$_POST[mobilenumber]','$_POST[city]','$_POST[pincode]','$_POST[loginid]','$_POST[password]','$_POST[select2]','$_POST[select3]','$_POST[dateofbirth]','Active')";
-	if($qsql = mysqli_query($con,$sql))
+  
+    $password=md5($_POST['password']);
+    $sql ="INSERT INTO patient(patientname,admissiondate,admissiontime,address,mobileno,city,pincode,loginid,password,bloodgroup,gender,dob,status) values('$_POST[patientname]','$dt','$tim','$_POST[address]','$_POST[mobilenumber]','$_POST[city]','$_POST[pincode]','$_POST[loginid]','$password','$_POST[select2]','$_POST[select3]','$_POST[dateofbirth]','Active')";
+   
+    if($qsql = mysqli_query($con,$sql))
 	{
 		echo "<script>alert('patients record inserted successfully...');</script>";
 		$insid= mysqli_insert_id($con);
@@ -82,13 +87,14 @@ if(isset($_GET[editid]))
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    
   </head>
   <body>
   <nav class="navbar py-4 navbar-expand-lg ftco_navbar navbar-light bg-light flex-row">
     	<div class="container">
     		<div class="row no-gutters d-flex align-items-start align-items-center px-3 px-md-0">
     			<div class="col-lg-2 pr-4 align-items-center">
-		    		<a class="navbar-brand" href="index.html">Cairo.<span>Hospital</span></a>
+		    		<a class="navbar-brand" >Cairo.<span>Hospital</span></a>
 	    		</div>
 	    		<div class="col-lg-10 d-none d-md-block">
 		    		<div class="row d-flex">
@@ -153,8 +159,8 @@ if(isset($_GET[editid]))
           <td><input type="text" name="city" id="city" value="<?php echo $rsedit[city]; ?>" required/></td>
         </tr>
         <tr>
-          <td>PIN Code</td>
-          <td><input type="text" name="pincode" id="pincode" pattern="^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$" value="<?php echo $rsedit[pincode]; ?>"required /></td>
+          <td>Postal Code</td>
+          <td><input type="text" name="pincode" id="pincode" pattern="^[0-9\-\+]{5}$" value="<?php echo $rsedit[pincode]; ?>"required /></td>
         </tr>
         <tr>
           <td>Login ID</td>
@@ -218,12 +224,17 @@ if(isset($_GET[editid]))
     </table>
     </form>
     <p>&nbsp;</p>
+    <button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
   </div>
 </div>
 </div>
  <div class="clear"></div>
   </div>
 </div>
-<?php
-include("footer.php");
-?>
+
